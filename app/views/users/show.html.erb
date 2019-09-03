@@ -1,0 +1,34 @@
+<div class="sidebar">
+  <button class="uk-button uk-button-default" type="button" uk-toggle="target: .toggle">How to use</button>
+  <p class="toggle"></p>
+  <p class="toggle" hidden>漫画を記録するだけでなく、お気に入りのシーンも登録できます！
+  また、右側のボタンを押して下にスクロールすると、感想の閲覧、投稿の削除及び画像の閲覧も可能です！</p>
+  <button href="#toggle-animation" class="uk-button uk-button-default" type="button" uk-toggle="target: #toggle-animation; animation: uk-animation-fade">Comics</button>
+    <div id="toggle-animation" class="uk-card uk-card-default uk-card-body uk-margin-small" hidden>漫画登録数:<%= @comicNumber%>冊</div>
+</div>
+
+  <div class="comic-info"> 
+    <% @comics.each do |comic| %>
+    <div class="comics">
+    <ul uk-accordion>
+      <li>
+        <a class="uk-accordion-title" href="#">
+          <p class="comic comic-title"><%= comic.title %></p>
+          <p class="comic comic-volume"><%= comic.volume %>巻</p>
+        </a>
+        <div class="uk-accordion-content">
+          <p class="comic comic-thought">感想</p>
+          <p class="comic-thought"><%= comic.thought %></p>
+          <p><%= link_to 'delete', user_comic_path(comic.id), method: :delete, class: :"comicDelete uk-button uk-button-default uk-button-danger" %></p>
+          <p><%= link_to 'images', user_comic_path(comic.id), method: :get, class: :"comicImage uk-button uk-button-default uk-button-primary" %></p>
+          <br>
+        </div>
+      </li>
+    </ul>
+    </div>
+    <% end %>
+    <%= paginate(@comics) %>
+  </div>
+
+
+  

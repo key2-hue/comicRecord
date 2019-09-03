@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ComicRecord</title>
+    <meta charset="utf-8">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/uikit.min.css" /> %>
+  </head>
+
+  <body>
+    <header class="header  uk-alert-primary">
+      <% if user_signed_in? %>
+        <div class="siteName">
+          <h1 class="title">コミックレコード</h1>
+        </div>
+          <ul class="uk-breadcrumb">
+            <li><%= link_to '新規投稿', new_user_comic_path(current_user), method: :get, class: :signout %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: :signout %></li>
+          </ul>       
+      <% else %>
+        <div class="siteName">
+          <h1 class="title"> コミックレコード~コミ×レコ~</h1>      
+        </div>
+          <ul class="uk-breadcrumb">
+          <li><%= link_to '新規登録', new_user_registration_path, method: :get, class: :signout %></li>
+            <li><%= link_to 'ログイン', new_user_session_path, method: :get, class: :signout %></li>
+          </ul>
+      <% end %>
+    </header>  
+    <%= yield %>
+    <%# <script src="js/jquery.js"></script>
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script> %>
+  </body>
+</html>

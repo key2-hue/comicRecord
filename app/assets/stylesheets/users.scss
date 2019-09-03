@@ -1,0 +1,67 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//show.html.erb
+
+.sidebar {
+  float:left;
+  margin: 30px 0 0 20px;
+}
+
+.toggle {
+  width: 150px;
+}
+
+.comic-info {
+  width: calc(100vw - 300px);
+  float: right;
+}
+.comics {
+  margin-top: 40px;
+  margin-right: 40px;
+  background-color: skyblue;
+  height: 250px;
+  width: 250px;
+  float: left;
+  overflow: scroll;
+}
+
+
+.comic {
+  float: left;
+  margin-right: 10px;
+}
+
+
+.comic-title {
+  margin-top: 20px;
+  margin-left: 20px;
+  max-width: 200px;
+  word-wrap: break-word;
+}
+
+.comic-volume {
+  clear: both;
+  margin-left: 20px;
+}
+
+.comic-thought {
+  clear: both;
+  margin-left: 20px;
+  max-width: 200px;
+  word-wrap: break-word;
+}
+
+.comicDelete {
+  margin: 10px 10px 10px 20px;
+}
+
+.comicImage {
+  margin: 10px 10px 10px 20px;
+}
+
+.pagination {
+  clear: both;
+}
+

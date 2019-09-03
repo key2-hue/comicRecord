@@ -1,0 +1,7 @@
+{
+  "name": "comic-record",
+  "private": true,
+  "dependencies": {
+    "uikit": "file:uikit"
+  }
+}

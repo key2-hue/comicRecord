@@ -1,0 +1,39 @@
+<div class="uk-animation-toggle" tabindex="0">
+  <%=form_for @comic, :url => {:controller => :comics, :action => :update}, html: {class: 'uk-form-stacked uk-card uk-card-default uk-card-body uk-animation-slide-top'} do |f| %>
+    <ul style="list-style-type: none;">
+      <li class="uk-margin">
+        <%= f.label :漫画のタイトル及び巻数を入力しないと登録されないのでご注意ください, class: "uk-form-label caution", for: "form-stacked-text", style: "font-size: 20px;" %>
+      </li>
+      <li class="uk-margin">
+        <%= f.label :漫画のタイトル, class: "uk-form-label", for: "form-stacked-text" %>
+        <div class="uk-form-controls">
+          <%= f.text_field :title, value: "<%= @comic.title %>" %>
+        </div>
+      </li>
+      <li class="uk-margin">
+        <%= f.label :"巻数（数字のみ入力ください）", class: "uk-form-label", for: "form-stacked-text" %>
+        <div class="uk-form-controls">
+          <%= f.text_field :volume, placeholder: "巻数を入力してください"%>
+        </div>
+      </li>
+      <li class="uk-margin">
+        <%= f.label :感想, class: "uk-form-label", for: "form-stacked-text" %>
+        <div class="uk-form-controls">
+          <%= f.text_area :thought, rows:3, placeholder: "感想を入力してください" %>
+        </div>
+      </li>
+      <li class="uk-margin">
+        <%= f.label "お気に入りのシーンを追加してください", class: "uk-form-label", for: "form-stacked-text"%>
+        <div class="uk-form-controls">
+          <%= f.fields_for :thumbnails do |thumbnail| %>
+            <%= thumbnail.file_field :image %>
+          <% end %>
+        </div>
+      </li>
+      <li>
+        <%= f.submit "登録する", class: "post" %>
+        <%= link_to "戻る", user_path(current_user), method: :get, class: "back back-new" %> 
+      </li>
+    </ul>
+  <% end %>
+</div>

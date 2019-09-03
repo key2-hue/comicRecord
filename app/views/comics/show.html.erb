@@ -1,0 +1,22 @@
+<div class="uk-position-relative uk-light" uk-slideshow>
+
+<% if @thumbnails.any? %>
+    <ul class="uk-slideshow-items">
+        <% @thumbnails.each do |thumb| %>
+        <li>
+            <%= image_tag thumb.image.url, class: "uk-cover" %>
+        </li>
+        <% end %>
+    </ul>
+
+    <div class="uk-position-bottom-center uk-position-small">
+        <ul class="uk-dotnav">
+            <li uk-slideshow-item="0"><a href="#">Item 1</a></li>
+            <li uk-slideshow-item="1"><a href="#">Item 2</a></li>
+            <li uk-slideshow-item="2"><a href="#">Item 3</a></li>
+        </ul>
+    </div>
+<% end %>
+</div>
+<%= link_to "back", user_path, method: :get, class: "back" %> 
+
