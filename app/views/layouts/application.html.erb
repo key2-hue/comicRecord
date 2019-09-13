@@ -24,10 +24,20 @@
           <ul class="uk-breadcrumb">
             <li><%= link_to '新規投稿', new_user_comic_path(current_user), method: :get, class: :signout %></li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: :signout %></li>
-          </ul>       
+          </ul> 
+          <div class="navToggle">
+            <i class="fas fa-bars header__icon"></i>
+          </div>
+          <nav class="hamburger hamburger-nav">
+            <button type="button" id="nav-toggle" class="nav-toggle-button"></button>
+            <ul id="nav-list" class="nav-list close", style="list-style-type:none;">
+              <li><%= link_to '新規投稿', new_user_comic_path(current_user), method: :get,class: 'hum hum-login', style: 'color: #999; text-decoration:none;'%></li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'hum hum-new', style: 'color: #999; text-decoration:none;'%></li>
+            </ul>
+          </nav>      
       <% else %>
         <div class="siteName">
-          <h1 class="title"> コミックレコード~コミ×レコ~</h1>      
+          <h1 class="title"> コミックレコード</h1>      
         </div>
           <ul class="uk-breadcrumb">
             <li><%= link_to '新規登録', new_user_registration_path, method: :get, class: :signout %></li>
@@ -39,8 +49,8 @@
           <nav class="hamburger hamburger-nav">
             <button type="button" id="nav-toggle" class="nav-toggle-button"></button>
             <ul id="nav-list" class="nav-list close", style="list-style-type:none;">
-              <li><%= link_to '新規登録', new_user_registration_path, method: :get,class: 'hum hum-new', style: 'color: #999; text-decoration:none;' %></li>
               <li><%= link_to 'ログイン', new_user_session_path, method: :get,class: 'hum hum-login', style: 'color: #999; text-decoration:none;'%></li>
+              <li><%= link_to '新規登録', new_user_registration_path, method: :get,class: 'hum hum-new', style: 'color: #999; text-decoration:none;'%></li>
             </ul>
           </nav>
       <% end %>
