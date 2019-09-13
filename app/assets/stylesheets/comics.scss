@@ -25,7 +25,54 @@ body {
   margin:0;
 }
 
+.navToggle {
+  display: block;
+  position: relative;
+  right: 13px;
+  top: 12px;
+}
+
+.hamburger-nav {
+  display: none;
+}
+
+@media  (max-width: 754px){
+  .uk-breadcrumb {
+    display:none;
+  }
+  .navToggle {
+    display: block;
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    font-size: 30px;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 755px) {
+  .uk-breadcrumb {
+    display:flex;
+  }
+  .navToggle {
+    display: none;
+  }
+  .hamburger-nav {
+    display: none;
+  }
+}
+
+.hum:hover {
+  opacity: 1.0;
+}
+
+.hum-new {
+  position: relative;
+  top: 60px;
+}
+
 .uk-breadcrumb {
+  
   margin: 0 100px 0 0;
   float: right;
   line-height: 100px;
