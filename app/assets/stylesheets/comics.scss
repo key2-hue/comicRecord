@@ -111,8 +111,12 @@ body {
 }
 
 //new.html.erb
-#comic_title, #comic_volume, #comic_thought {
+#comic_title, #comic_volume, #comic_thought, #comic_genre {
   border: 1px solid black;
+}
+
+#comic_title:focus, #comic_volume:focus, #comic_thought:focus, #comic_genre:focus {
+  outline: none;
 }
 
 //show.html.erb

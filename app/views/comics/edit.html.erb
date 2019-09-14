@@ -7,7 +7,7 @@
       <li class="uk-margin">
         <%= f.label :漫画のタイトル, class: "uk-form-label", for: "form-stacked-text" %>
         <div class="uk-form-controls">
-          <%= f.text_field :title, value: "<%= @comic.title %>" %>
+          <%= f.text_field :title%>
         </div>
       </li>
       <li class="uk-margin">
@@ -25,8 +25,8 @@
       <li class="uk-margin">
         <%= f.label "お気に入りのシーンを追加してください", class: "uk-form-label", for: "form-stacked-text"%>
         <div class="uk-form-controls">
-          <%= f.fields_for :thumbnails do |thumbnail| %>
-            <%= thumbnail.file_field :image %>
+          <%= f.fields_for :thumbnails do |t| %>
+            <%= t.file_field :image, value: @thumbnails %>
           <% end %>
         </div>
       </li>

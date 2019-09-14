@@ -15,7 +15,7 @@ class ComicsController < ApplicationController
 
   def show
     @comic = Comic.find(params[:user_id])
-    @thumbnails = Thumbnail.where(comic_id: @comic.id)
+    @thumbnails = Thumbnail.where(comic_id: @comic)
   end
 
   def create
@@ -29,6 +29,7 @@ class ComicsController < ApplicationController
 
   def edit
     @comic = Comic.find(params[:user_id])
+    @thumbnails = Thumbnail.find_by(comic_id: @comic.id)
   end
 
   def update
@@ -40,13 +41,17 @@ class ComicsController < ApplicationController
 
   def destroy
     @comic = Comic.find(params[:user_id])
+    @thumbnail = Thumbnail.find_by(comic_id: @comic)
     @comic.destroy
+    if @thumbnail
+      @thumbnail.destroy
+    end
     redirect_to user_path(current_user)
   end
 
   private
 
   def comic_params
-    params.require(:comic).permit(:title, :volume, :thought, :image, :image_two, :image_three, thumbnails_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:comic).permit(:title, :volume, :thought, :genre, thumbnails_attributes: [:image]).merge(user_id: current_user.id)
   end
 end
