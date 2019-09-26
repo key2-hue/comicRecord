@@ -29,12 +29,19 @@ class ComicsController < ApplicationController
 
   def edit
     @comic = Comic.find(params[:user_id])
-    @thumbnails = Thumbnail.find_by(comic_id: @comic.id)
+    @thumbnails = Thumbnail.where(comic_id: @comic.id)
   end
 
   def update
     @comic = Comic.find(params[:user_id])
-    # @thumbnails = Thumbnail.find_by(comic_id: @comic.id)
+    @thumbnails = Thumbnail.where(comic_id: @comic.id)
+    @thumbnails.each do |thumb|
+      if thumb
+        Thumbnail.update(image: thumb.image.url)
+      else
+      end
+    end
+    # binding.pry
     @comic.update(comic_params)
     # @thumnails.update(thumbnail_params)
     redirect_to user_path(current_user)
@@ -57,7 +64,7 @@ class ComicsController < ApplicationController
     params.require(:comic).permit(:title, :volume, :thought, :genre, thumbnails_attributes: [:image]).merge(user_id: current_user.id)
   end
 
-  # def thumbnail_params
-  #   params.require(:thumbnail).permit(:id, :comic_id, :image)
-  # end
+  def thumbnail_params
+    params.require(:thumbnail).permit(:id, :comic_id, :image)
+  end
 end

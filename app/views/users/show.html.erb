@@ -23,6 +23,7 @@
           <p class="comic-thought"><%= comic.thought %></p>
           <p class="comic-genre">ジャンル</p>
           <p class="comic-genre"><%= comic.genre %></p> 
+          <p><%= link_to 'edit', edit_user_comic_path(comic.id), method: :get, class: :"comicEdit uk-button uk-button-default uk-button-danger"%></p>  
           <p><%= link_to 'delete', user_comic_path(comic.id), method: :delete, class: :"comicDelete uk-button uk-button-default uk-button-danger" %></p>
           <p><%= link_to 'images', user_comic_path(comic.id), method: :get, class: :"comicImage uk-button uk-button-default uk-button-primary" %></p>
           <br>
