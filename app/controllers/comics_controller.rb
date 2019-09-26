@@ -34,7 +34,9 @@ class ComicsController < ApplicationController
 
   def update
     @comic = Comic.find(params[:user_id])
+    # @thumbnails = Thumbnail.find_by(comic_id: @comic.id)
     @comic.update(comic_params)
+    # @thumnails.update(thumbnail_params)
     redirect_to user_path(current_user)
   end
 
@@ -54,4 +56,8 @@ class ComicsController < ApplicationController
   def comic_params
     params.require(:comic).permit(:title, :volume, :thought, :genre, thumbnails_attributes: [:image]).merge(user_id: current_user.id)
   end
+
+  # def thumbnail_params
+  #   params.require(:thumbnail).permit(:id, :comic_id, :image)
+  # end
 end

@@ -24,11 +24,16 @@
       </li>
       <li class="uk-margin">
         <%= f.label "お気に入りのシーンを追加してください", class: "uk-form-label", for: "form-stacked-text"%>
-        <div class="uk-form-controls">
-          <%= f.fields_for :thumbnails do |t| %>
-            <%= t.file_field :image, value: @thumbnails %>
-          <% end %>
-        </div>
+        <% @comic.thumbnails.each do |thumbnail| %>
+          <div class="uk-form-controls">
+            <%= f.fields_for :thumbnails, thumbnail, html: {class: "edit-thumbnail"} do |t| %>
+              <% if thumbnail.image? %>
+                <%= image_tag thumbnail.image.url , class: "edit-image" %><br>
+              <% end %>
+              <%= t.file_field :image, placeholder: "thumbnail.image.url" %>
+            <% end %>
+          </div>
+        <% end %>
       </li>
       <li>
         <%= f.submit "登録する", class: "post" %>
